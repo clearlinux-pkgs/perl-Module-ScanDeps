@@ -4,7 +4,7 @@
 #
 Name     : perl-Module-ScanDeps
 Version  : 0.54
-Release  : 2
+Release  : 3
 URL      : http://search.cpan.org/CPAN/authors/id/A/AU/AUTRIJUS/Module-ScanDeps-0.54.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/A/AU/AUTRIJUS/Module-ScanDeps-0.54.tar.gz
 Summary  : Recursively scan Perl code for dependencies
