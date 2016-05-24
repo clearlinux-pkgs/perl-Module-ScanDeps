@@ -4,7 +4,7 @@
 #
 Name     : perl-Module-ScanDeps
 Version  : 0.54
-Release  : 4
+Release  : 5
 URL      : http://search.cpan.org/CPAN/authors/id/A/AU/AUTRIJUS/Module-ScanDeps-0.54.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/A/AU/AUTRIJUS/Module-ScanDeps-0.54.tar.gz
 Summary  : Recursively scan Perl code for dependencies
@@ -68,8 +68,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.22.0/Module/ScanDeps.pm
-/usr/lib/perl5/site_perl/5.22.0/Module/ScanDeps/DataFeed.pm
+/usr/lib/perl5/site_perl/5.24.0/Module/ScanDeps.pm
+/usr/lib/perl5/site_perl/5.24.0/Module/ScanDeps/DataFeed.pm
 
 %files bin
 %defattr(-,root,root,-)
