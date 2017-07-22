@@ -4,7 +4,7 @@
 #
 Name     : perl-Module-ScanDeps
 Version  : 0.54
-Release  : 6
+Release  : 7
 URL      : http://search.cpan.org/CPAN/authors/id/A/AU/AUTRIJUS/Module-ScanDeps-0.54.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/A/AU/AUTRIJUS/Module-ScanDeps-0.54.tar.gz
 Summary  : Recursively scan Perl code for dependencies
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : Artistic-1.0-Perl
 Requires: perl-Module-ScanDeps-bin
 Requires: perl-Module-ScanDeps-doc
+BuildRequires : perl(Module::Install)
 
 %description
 scan Perl programs for dependencies.
@@ -40,6 +41,10 @@ doc components for the perl-Module-ScanDeps package.
 %setup -q -n Module-ScanDeps-0.54
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
+export LANG=C
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make V=1  %{?_smp_mflags}
@@ -49,9 +54,10 @@ else
 fi
 
 %check
+export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 make TEST_VERBOSE=1 test
 
 %install
@@ -68,8 +74,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.24.0/Module/ScanDeps.pm
-/usr/lib/perl5/site_perl/5.24.0/Module/ScanDeps/DataFeed.pm
+/usr/lib/perl5/site_perl/5.26.0/Module/ScanDeps.pm
+/usr/lib/perl5/site_perl/5.26.0/Module/ScanDeps/DataFeed.pm
 
 %files bin
 %defattr(-,root,root,-)
