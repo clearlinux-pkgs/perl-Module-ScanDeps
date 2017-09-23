@@ -4,12 +4,12 @@
 #
 Name     : perl-Module-ScanDeps
 Version  : 1.24
-Release  : 8
+Release  : 9
 URL      : http://search.cpan.org/CPAN/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.24.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.24.tar.gz
 Summary  : 'Recursively scan Perl code for dependencies'
 Group    : Development/Tools
-License  : Artistic-1.0-Perl
+License  : Artistic-1.0-Perl GPL-1.0
 Requires: perl-Module-ScanDeps-bin
 Requires: perl-Module-ScanDeps-doc
 BuildRequires : perl(Module::Install)
@@ -75,8 +75,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.0/Module/ScanDeps.pm
-/usr/lib/perl5/site_perl/5.26.0/Module/ScanDeps/Cache.pm
+/usr/lib/perl5/site_perl/5.26.1/Module/ScanDeps.pm
+/usr/lib/perl5/site_perl/5.26.1/Module/ScanDeps/Cache.pm
 
 %files bin
 %defattr(-,root,root,-)
