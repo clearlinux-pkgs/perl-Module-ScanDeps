@@ -4,15 +4,15 @@
 #
 Name     : perl-Module-ScanDeps
 Version  : 1.25
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.25.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.25.tar.gz
 Summary  : 'Recursively scan Perl code for dependencies'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
-Requires: perl-Module-ScanDeps-bin
-Requires: perl-Module-ScanDeps-license
-Requires: perl-Module-ScanDeps-man
+Requires: perl-Module-ScanDeps-bin = %{version}-%{release}
+Requires: perl-Module-ScanDeps-license = %{version}-%{release}
+Requires: perl-Module-ScanDeps-man = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Module::Install)
 BuildRequires : perl(Test::Requires)
@@ -27,8 +27,8 @@ for further information.
 %package bin
 Summary: bin components for the perl-Module-ScanDeps package.
 Group: Binaries
-Requires: perl-Module-ScanDeps-license
-Requires: perl-Module-ScanDeps-man
+Requires: perl-Module-ScanDeps-license = %{version}-%{release}
+Requires: perl-Module-ScanDeps-man = %{version}-%{release}
 
 %description bin
 bin components for the perl-Module-ScanDeps package.
@@ -37,8 +37,8 @@ bin components for the perl-Module-ScanDeps package.
 %package dev
 Summary: dev components for the perl-Module-ScanDeps package.
 Group: Development
-Requires: perl-Module-ScanDeps-bin
-Provides: perl-Module-ScanDeps-devel
+Requires: perl-Module-ScanDeps-bin = %{version}-%{release}
+Provides: perl-Module-ScanDeps-devel = %{version}-%{release}
 
 %description dev
 dev components for the perl-Module-ScanDeps package.
@@ -85,12 +85,12 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/perl-Module-ScanDeps
-cp LICENSE %{buildroot}/usr/share/doc/perl-Module-ScanDeps/LICENSE
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-Module-ScanDeps
+cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Module-ScanDeps/LICENSE
 if test -f Makefile.PL; then
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
-./Build install --installdirs=site --destdir=%{buildroot}
+./Build install --installdirs=vendor --destdir=%{buildroot}
 fi
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -99,8 +99,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/Module/ScanDeps.pm
-/usr/lib/perl5/site_perl/5.26.1/Module/ScanDeps/Cache.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Module/ScanDeps.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Module/ScanDeps/Cache.pm
 
 %files bin
 %defattr(-,root,root,-)
@@ -111,9 +111,9 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/share/man/man3/Module::ScanDeps.3
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/perl-Module-ScanDeps/LICENSE
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-Module-ScanDeps/LICENSE
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/man1/scandeps.pl.1
