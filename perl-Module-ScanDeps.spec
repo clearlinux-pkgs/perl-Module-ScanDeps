@@ -4,7 +4,7 @@
 #
 Name     : perl-Module-ScanDeps
 Version  : 1.27
-Release  : 23
+Release  : 24
 URL      : https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.27.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.27.tar.gz
 Summary  : Scan file prerequisites
