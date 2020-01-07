@@ -4,15 +4,16 @@
 #
 Name     : perl-Module-ScanDeps
 Version  : 1.27
-Release  : 25
+Release  : 26
 URL      : https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.27.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.27.tar.gz
-Summary  : Scan file prerequisites
+Summary  : 'Recursively scan Perl code for dependencies'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-Module-ScanDeps-bin = %{version}-%{release}
 Requires: perl-Module-ScanDeps-license = %{version}-%{release}
 Requires: perl-Module-ScanDeps-man = %{version}-%{release}
+Requires: perl-Module-ScanDeps-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Module::Install)
 BuildRequires : perl(Test::Requires)
@@ -60,14 +61,24 @@ Group: Default
 man components for the perl-Module-ScanDeps package.
 
 
+%package perl
+Summary: perl components for the perl-Module-ScanDeps package.
+Group: Default
+Requires: perl-Module-ScanDeps = %{version}-%{release}
+
+%description perl
+perl components for the perl-Module-ScanDeps package.
+
+
 %prep
 %setup -q -n Module-ScanDeps-1.27
+cd %{_builddir}/Module-ScanDeps-1.27
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -77,7 +88,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -86,7 +97,7 @@ make TEST_VERBOSE=1 test || :
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Module-ScanDeps
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Module-ScanDeps/LICENSE
+cp %{_builddir}/Module-ScanDeps-1.27/LICENSE %{buildroot}/usr/share/package-licenses/perl-Module-ScanDeps/724e019aadc4cc1b851dc94c40ca66972aaaaaed
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -99,8 +110,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Module/ScanDeps.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Module/ScanDeps/Cache.pm
 
 %files bin
 %defattr(-,root,root,-)
@@ -112,8 +121,13 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Module-ScanDeps/LICENSE
+/usr/share/package-licenses/perl-Module-ScanDeps/724e019aadc4cc1b851dc94c40ca66972aaaaaed
 
 %files man
 %defattr(0644,root,root,0755)
 /usr/share/man/man1/scandeps.pl.1
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Module/ScanDeps.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Module/ScanDeps/Cache.pm
