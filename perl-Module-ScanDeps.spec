@@ -4,7 +4,7 @@
 #
 Name     : perl-Module-ScanDeps
 Version  : 1.31
-Release  : 39
+Release  : 40
 URL      : https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.31.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.31.tar.gz
 Summary  : 'Recursively scan Perl code for dependencies'
@@ -129,5 +129,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/Module/ScanDeps.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Module/ScanDeps/Cache.pm
+/usr/lib/perl5/*
