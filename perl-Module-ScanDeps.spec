@@ -5,7 +5,7 @@
 #
 Name     : perl-Module-ScanDeps
 Version  : 1.32
-Release  : 43
+Release  : 44
 URL      : https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.32.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.32.tar.gz
 Summary  : 'Recursively scan Perl code for dependencies'
