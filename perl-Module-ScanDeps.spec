@@ -4,10 +4,10 @@
 # Using build pattern: cpan
 #
 Name     : perl-Module-ScanDeps
-Version  : 1.33
-Release  : 45
-URL      : https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.33.tar.gz
-Source0  : https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.33.tar.gz
+Version  : 1.34
+Release  : 46
+URL      : https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.34.tar.gz
+Source0  : https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.34.tar.gz
 Summary  : 'Recursively scan Perl code for dependencies'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
@@ -16,6 +16,7 @@ Requires: perl-Module-ScanDeps-license = %{version}-%{release}
 Requires: perl-Module-ScanDeps-man = %{version}-%{release}
 Requires: perl-Module-ScanDeps-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
+BuildRequires : perl(IPC::Run3)
 BuildRequires : perl(Module::Install)
 BuildRequires : perl(Test::Requires)
 # Suppress stripping binaries
@@ -75,10 +76,10 @@ perl components for the perl-Module-ScanDeps package.
 
 
 %prep
-%setup -q -n Module-ScanDeps-1.33
-cd %{_builddir}/Module-ScanDeps-1.33
+%setup -q -n Module-ScanDeps-1.34
+cd %{_builddir}/Module-ScanDeps-1.34
 pushd ..
-cp -a Module-ScanDeps-1.33 buildavx2
+cp -a Module-ScanDeps-1.34 buildavx2
 popd
 
 %build
